@@ -1,6 +1,5 @@
-// Copyright Andrei <andreid.dev@gmail.com>
-
-import { COIN, SharedObjectRef } from "./types";
+import { SharedObjectRef } from "@mysten/sui.js/bcs";
+import { COIN } from "./types";
 
 export const BUCKET_OPERATIONS_PACKAGE_ID: string =
   "0x82fc47ec25ff2ed651c609848f0239aa67517276d62d638853163c22545869b5";

@@ -1,7 +1,7 @@
 import { COIN, FountainInfo, FountainResponse, PsmInfo, PsmPoolResponse, StrapFountainInfo, StrapFountainResponse } from "../types";
 import { COIN_DECIMALS, PSM_POOL_IDS } from "../constants";
 import { formatUnits } from "./format";
-import { SuiObjectResponse } from "@mysten/sui/client";
+import { SuiObjectResponse } from "@mysten/sui.js/client";
 import { getObjectFields } from "./object";
 
 export function objectToFountain(res: SuiObjectResponse): FountainInfo {

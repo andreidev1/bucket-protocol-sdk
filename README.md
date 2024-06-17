@@ -32,7 +32,7 @@ const buck = new BucketClient("https://sui-mainnet-endpoint.blockvision.org/");
 ```ts
 
 // Build psmIn transaction
-let tx = new Transaction();
+let tx = new TransactionBlock();
 
 const coinOut = await buck.psmSwapIn(
   tx,
@@ -89,7 +89,7 @@ await buck.getUserLpProofs(`0xdummy.....`)
 ## Get borrow transaction
 
 ```ts
-let tx = new Transaction();
+let tx = new TransactionBlock();
 
 tx = await buck.getBorrowTx(
   tx,
