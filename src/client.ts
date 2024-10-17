@@ -2191,11 +2191,12 @@ export class BucketClient {
 
     return true;
   }
+
   async getSurplusWithdrawTx(
     tx: Transaction,
     collateralType: string,
     walletAddress: string,
-    strapId?: string,
+    strapId?: string | TransactionArgument,
   ): Promise<Transaction> {
     /**
      * @description Withdraw
@@ -2211,7 +2212,7 @@ export class BucketClient {
     }
 
     if (strapId) {
-      const strap = tx.object(strapId);
+      const strap = typeof strapId === "string" ? tx.object(strapId) : strapId;
       const surplusCollateral = tx.moveCall({
         target: `${CORE_PACKAGE_ID}::buck::withdraw_surplus_with_strap`,
         typeArguments: [collateralType],
