@@ -1533,23 +1533,23 @@ export class BucketClient {
           isLocked: true,
         });
       } else {
-        const surplusBottleRes = await this.client.getDynamicFieldObject({
+        const surplusBottleInfo = await this.client.getDynamicFieldObject({
           parentId: bottleInfo.surplus_id,
           name: {
             type: "address",
             value: strapAddress,
           },
         });
-        const surplusData = getObjectFields(surplusBottleRes);
-        if (surplusData) {
+
+        const surplusBottleFields = getObjectFields(surplusBottleInfo);
+        const collateralAmount =
+          surplusBottleFields?.value.fields.collateral_amount ?? 0;
+        if (collateralAmount) {
           userBottles.push({
             token: lpToken,
+            collateralAmount,
+            buckAmount: 0,
             strapId: strapData.value.fields.strap.fields.id.id,
-            debtAmount: Number(strapData.value.fields.debt_amount),
-            startUnit: Number(strapData.value.fields.start_unit),
-            collateralAmount:
-              surplusData.value.fields.value.fields.collateral_amount,
-            buckAmount: surplusData.value.fields.value.fields.buck_amount,
             isLocked: true,
           });
         }
